@@ -6,6 +6,7 @@ const fileUpload = require('express-fileupload')
 const session = require('express-session')
 const connectMongo = require('connect-mongo')
 const connectFlash = require('connect-flash')
+const cloudinary = require('cloudinary')
 
 const PostController = require('./controllers/create_post')
 const homepageController = require('./controllers/homepage_controller')
@@ -50,6 +51,12 @@ app.use('*', (req, res, next) => {
 	next()
 })
 app.use(connectFlash())
+
+cloudinary.config({
+	api_key: '867823998822749',
+	api_secret: 'lBYmdJPfzEi1nByYiE9BrKtqcDk',
+	cloud_name: 'db4dwaubq'
+})
 
 app.set('views', `${__dirname}/views`)
 
